@@ -7,9 +7,13 @@ const Wrapper = styled.div`
   height: 100vh;
   background-color: wheat;
 
-  @media ${({ theme }) => theme.device.mobile} {
-    height: 100vh;
-    background-color: black;
+  // @media ${({ theme }) => theme.device.mobile} {
+  //   height: 100vh;
+  //   background-color: black;
+  // }
+
+  @media only screen and (max-width: 700px) {
+    background-color: white;
   }
 `;
 
