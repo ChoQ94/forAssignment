@@ -3,13 +3,13 @@ const deviceSizes = {
   laptop: 1600,
 };
 
-const device = {
+const theme = {
   mobile: `screen and (max-width: ${deviceSizes.mobile}px)`,
   laptop: `screen and (max-width: ${deviceSizes.laptop}px)`,
 };
 
-const theme = {
-  device,
-};
+// const theme = {
+//   device,
+// };
 
 export default theme;
