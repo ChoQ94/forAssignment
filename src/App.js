@@ -21,9 +21,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <Wrapper>
-        <div className="App">
-          <MainPage />
-        </div>
+        <MainPage />
       </Wrapper>
     </ThemeProvider>
   );
