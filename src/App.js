@@ -1,9 +1,12 @@
 import "./App.css";
 import styled, { ThemeProvider } from "styled-components";
-import MainPage from "page/main/MainPage";
 import MainHeader from "component/mainHeader/MainHeader";
-import theme from "styles/theme";
+import ItemContainer from "component/itemContainer/ItemContainer";
+import ListContainer from "component/listContainer/ListContainer";
 
+import theme from "styles/theme";
+import React from "react";
+import { useState } from "react";
 const Wrapper = styled.div`
   height: 100vh;
   background-color: white;
@@ -18,12 +21,30 @@ const Wrapper = styled.div`
   }
 `;
 
+const ContentWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  padding: 100px;
+  gap: 40px;
+  margin: 0px 100px;
+`;
+
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <Wrapper>
         <MainHeader />
-        <MainPage />
+
+        <ContentWrapper>
+          <ListContainer />
+          <div
+            style={{
+              border: "1px solid black",
+              width: "400px",
+              height: "720px",
+            }}
+          ></div>
+        </ContentWrapper>
       </Wrapper>
     </ThemeProvider>
   );
