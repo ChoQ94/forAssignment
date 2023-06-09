@@ -3,7 +3,7 @@ import Name from "component2/name/Name";
 import Mail from "component2/mail/Mail";
 import Submit from "component2/submit/Submit";
 import styled from "styled-components";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useResetRecoilState } from "recoil";
 import { textState } from "recoil/todo/atoms";
 
 const HeaderWrapper = styled.div`
@@ -25,9 +25,25 @@ export default function MainHeader() {
   // const headcounts = useRecoilValue(headcountsState);
   // 수정만 해주기
   // const setHeadcounts = useSetRecoilState(headcountsState);
+  // 초기화
+  const resetHeadcounts = useResetRecoilState(textState);
   const [count, setCount] = useRecoilState(textState);
+  const [boo, isBoo] = useState(false);
   console.log(count);
   const [step, setStep] = useState<signStep>("이름");
+
+  const exper = () => {
+    if (!boo) {
+      setCount({
+        name: "",
+        mail: "zzzz",
+      });
+      isBoo(!boo);
+    } else {
+      resetHeadcounts();
+      isBoo(!boo);
+    }
+  };
   return (
     <>
       <HeaderWrapper>
@@ -37,12 +53,7 @@ export default function MainHeader() {
             color: "#ffffff",
             fontWeight: "bold",
           }}
-          onClick={() => {
-            setCount({
-              name: "",
-              mail: "zzzz",
-            });
-          }}
+          onClick={exper}
         >
           내가 좋아하는 동물들
         </p>
