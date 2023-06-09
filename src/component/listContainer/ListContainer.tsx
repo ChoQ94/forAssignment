@@ -13,9 +13,9 @@ export default function ListContainer() {
 
   return (
     <ListWrapper>
-      {colorList.map((data) => {
+      {/* {colorList.map((data) => {
         return <ItemContainer color={data} />;
-      })}
+      })} */}
     </ListWrapper>
   );
 }
