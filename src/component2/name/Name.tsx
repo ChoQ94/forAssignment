@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { useNavigate, useNavigation } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { textState } from "recoil/todo/atoms";
 import styled from "styled-components";
 
 const NameWrapper = styled.div`
@@ -27,20 +30,37 @@ const Button = styled.button`
 `;
 
 interface Props {
-  onNext: any;
+  onNext?: any;
 }
 
 export default function Name(props: Props) {
   const { onNext } = props;
   const [name, setName] = useState<string>("");
 
+  const [submitData, setSubmitData] = useRecoilState(textState);
+
+  const navigate = useNavigate();
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSubmitData({
+      name: e.target.value,
+      mail: "",
+    });
+  };
+  console.log("결과", submitData);
+
   return (
     <NameWrapper>
       <div>
         <p>이름</p>
-        <Input onChange={(e) => setName(e.target.value)}></Input>
+        <Input onChange={handleChange}></Input>
       </div>
-      <Button onClick={onNext}>g2</Button>
+      <Button
+        onClick={() => {
+          navigate("/mail");
+        }}
+      >
+        g2
+      </Button>
     </NameWrapper>
   );
 }

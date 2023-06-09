@@ -9,7 +9,7 @@ import { textState } from "recoil/todo/atoms";
 const HeaderWrapper = styled.div`
   width: 1110px;
   height: 83px;
-  margin: 60px auto 30px;
+  margin: 0px auto;
   background-color: #323232;
   display: flex;
   align-items: center;
@@ -59,10 +59,10 @@ export default function MainHeader() {
         </p>
       </HeaderWrapper>
 
-      {step === "이름" && <Name onNext={() => setStep("메일")} />}
+      {/* {step === "이름" && <Name onNext={() => setStep("메일")} />}
 
       {step === "메일" && <Mail onNext={() => setStep("제출")} />}
-      {step === "제출" && <Submit />}
+      {step === "제출" && <Submit />} */}
     </>
   );
 }

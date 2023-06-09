@@ -1,5 +1,8 @@
 import ItemContainer from "component/itemContainer/ItemContainer";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { textState } from "recoil/todo/atoms";
 import styled from "styled-components";
 
 const MailWrapper = styled.div`
@@ -28,20 +31,35 @@ const Button = styled.button`
 `;
 
 interface Props {
-  onNext: any;
+  onNext?: any;
 }
 
 export default function Mail(props: Props) {
   const { onNext } = props;
   const [name, setName] = useState<string>("");
+  const [submitData, setSubmitData] = useRecoilState(textState);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSubmitData({
+      name: submitData.name,
+      mail: e.target.value,
+    });
+  };
   console.log(name);
+  const router = useNavigate();
   return (
     <MailWrapper>
       <div>
         <p>메일</p>
-        <Input onChange={(e) => setName(e.target.value)}></Input>
+        <Input onChange={handleChange}></Input>
       </div>
-      <Button onClick={onNext}>g2</Button>
+      <Button
+        onClick={() => {
+          router("/submit");
+        }}
+      >
+        g2
+      </Button>
     </MailWrapper>
   );
 }
