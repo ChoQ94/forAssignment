@@ -13,8 +13,8 @@ import Mail from "component2/mail/Mail";
 import Submit from "component2/submit/Submit";
 
 const Wrapper = styled.div`
-  height: 100vh;
-  background-color: white;
+  // height: 100vh;
+  // background-color: white;
 
   // @media ${({ theme }) => theme.mobile} {
   //   height: 100vh;
